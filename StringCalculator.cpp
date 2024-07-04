@@ -3,6 +3,6 @@
 int StringCalculator::add(const std::string input){
   if(input.empty())
   {
-  return -1;
+  return 0;
   }
 }

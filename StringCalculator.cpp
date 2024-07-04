@@ -1,5 +1,5 @@
 int add (char* input){
-  if(input == ' '){
+  if(input == ""){
   return -1;
   }
 }

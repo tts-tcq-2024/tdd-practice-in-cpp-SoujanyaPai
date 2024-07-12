@@ -10,6 +10,7 @@ namespace {
 bool isNumber(const std::string& s) {
     return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
 }
+} //namespace
 
 std::string StringCalculator::extractDelimiters(std::string& numbers) {
     std::string delimiters = ",\n";

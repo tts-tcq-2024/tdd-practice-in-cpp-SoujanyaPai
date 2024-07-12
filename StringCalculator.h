@@ -1,7 +1,15 @@
-#include <iostream>
+#ifndef STRINGCALCULATOR_H
+#define STRINGCALCULATOR_H
 
-class StringCalculator
-{
+#include <string>
+
+class StringCalculator {
 public:
-  int add(const std::string input);
+    int add(const std::string& numbers);
+private:
+    std::string extractDelimiters(std::string& numbers);
+    std::vector<std::string> tokenize(const std::string& numbers, const std::string& delimiters);
+    int parseAndSum(const std::vector<std::string>& tokens);
 };
+
+#endif // STRINGCALCULATOR_H

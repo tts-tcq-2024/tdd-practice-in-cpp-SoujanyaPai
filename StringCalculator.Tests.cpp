@@ -10,14 +10,14 @@ TEST(StringCalculatorAddTests, ExpectZeroForEmptyInput) {
     ASSERT_EQ(result, expectedresult);
 }
 
-// TEST(StringCalculatorAddTests, ExpectZeroForSingleZero) {
-//     int expectedresult = 0;
-//     std::string input = "0";
-//     StringCalculator objUnderTest;
-//     int result = objUnderTest.add(input);
+TEST(StringCalculatorAddTests, ExpectZeroForSingleZero) {
+    int expectedresult = 0;
+    std::string input = "0";
+    StringCalculator objUnderTest;
+    int result = objUnderTest.add(input);
 
-//     ASSERT_EQ(result, expectedresult);
-// }
+    ASSERT_EQ(result, expectedresult);
+}
 
 // TEST(StringCalculatorAddTests, ExpectSumForTwoNumbers) {
 //     int expectedresult = 3;

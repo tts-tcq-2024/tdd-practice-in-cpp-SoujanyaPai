@@ -2,6 +2,7 @@
 #define STRINGCALCULATOR_H
 
 #include <string>
+#include <vector>
 
 class StringCalculator {
 public:

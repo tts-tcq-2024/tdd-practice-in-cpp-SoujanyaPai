@@ -10,7 +10,7 @@ namespace {
 bool isNumber(const std::string& s) {
     return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
 }
-} //namespace
+} // namespace
 
 std::string StringCalculator::extractDelimiters(std::string& numbers) {
     std::string delimiters = ",\n";
@@ -65,4 +65,3 @@ int StringCalculator::add(const std::string& numbers) {
     std::vector<std::string> tokens = tokenize(numStr, delimiters);
     return parseAndSum(tokens);
 }
-

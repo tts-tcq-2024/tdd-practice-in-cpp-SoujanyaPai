@@ -10,7 +10,7 @@ public:
 private:
     void checkIfNegative(int number);
     int checkNumberLimit(int number);
-    std::vector<int> extractNumbers(const std::string& numbers);
+    std::vector<int> extractNumbers(const std::string& input);
     int calculateSum(const std::vector<int>& numbers);
 };
 

@@ -1,7 +1,6 @@
 #include "StringCalculator.h"
 #include <iostream>
 #include <string>
-#include <sstream>
 #include <stdexcept>
 #include <vector>
 #include <regex>

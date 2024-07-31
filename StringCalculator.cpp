@@ -11,7 +11,7 @@ void StringCalculator::checkIfNegative(int number) {
     }
 }
 
-int StringCalculator::checkIfGreaterthan1000(int number) {
+int StringCalculator::checkNumberLimit(int number) {
     return (number > 1000) ? 0 : number;
 }
 
@@ -26,7 +26,7 @@ std::vector<int> StringCalculator::extractNumbers(const std::string& numbers) {
         int number = std::stoi(i->str());
 
         checkForNegative(number);
-        number = checkforGreaterthan1000(number);
+        number = checkNumberLimit(number);
         // Add the number to the vector if it's not excluded
         if (number != 0) {
             numbers.push_back(number);

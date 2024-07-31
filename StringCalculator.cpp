@@ -1,47 +1,9 @@
 #include "StringCalculator.h"
+#include <iostream>
+#include <string>
 #include <stdexcept>
-#include <sstream>
 #include <vector>
-#include <algorithm>
 #include <regex>
-
-namespace {
-
-bool isNumber(const std::string& s) {
-    return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
-}
-} // namespace
-
-std::string StringCalculator::extractDelimiters(std::string& numbers) {
-    std::string delimiters = ",\n";
-    if (numbers.rfind("//", 0) == 0) {
-        size_t delimEnd = numbers.find("\n");
-        delimiters = numbers.substr(2, delimEnd - 2);
-        numbers = numbers.substr(delimEnd + 1);
-    }
-    return delimiters;
-}
-
-std::vector<std::string> StringCalculator::tokenize(const std::string& numbers, const std::string& delimiters) {
-    std::regex regex("[" + delimiters + "]+");
-    std::sregex_token_iterator it(numbers.begin(), numbers.end(), regex, -1);
-    std::sregex_token_iterator reg_end;
-    return std::vector<std::string>(it, reg_end);
-}
-
-int StringCalculator::parseAndSum(const std::vector<std::string>& tokens) {
-    int sum = 0;
-    std::vector<int> negatives;
-
-    for (const std::string& token : tokens) {
-        if (!isNumber(token)) continue;
-        int number = std::stoi(token);
-        if (number < 0) {
-            negatives.push_back(number);
-        }
-
-    return sum;
-}
 
 void StringCalculator::checkIfNegative(int number) {
     if (number < 0) {
@@ -53,13 +15,38 @@ int StringCalculator::checkIfGreaterthan1000(int number) {
     return (number > 1000) ? 0 : number;
 }
 
-int StringCalculator::add(const std::string& numbers) {
-    if (numbers.empty()) {
+std::vector<int> StringCalculator::extractNumbers(const std::string& numbers) {
+    std::vector<int> numbers;
+    
+    std::regex pattern(R"(-?\d{1,4})");  // The -? allows for optional negative signs
+    std::sregex_iterator iter(numbers.begin(), numbers.end(), pattern);
+    std::sregex_iterator end;
+
+    for (auto i = iter; i != end; ++i) {
+        int number = std::stoi(i->str());
+
+        checkForNegative(number);
+        number = checkforGreaterthan1000(number);
+        // Add the number to the vector if it's not excluded
+        if (number != 0) {
+            numbers.push_back(number);
+        }
+    }
+    return numbers;
+}
+
+int StringCalculator::calculateSum(const std::vector<int>& numbers) {
+    int sum = 0;
+    for (int number : numbers) {
+        sum += number;
+    }
+    return sum;
+}
+
+int StringCalculator::add(const std::string& input) {
+    if (input.empty()) {
         return 0;
     }
-
-    std::string numStr = numbers;
-    std::string delimiters = extractDelimiters(numStr);
-    std::vector<std::string> tokens = tokenize(numStr, delimiters);
-    return parseAndSum(tokens);
+    std::vector<int> numbers = extractNumbers(input);
+    return calculateSum(numbers);
 }

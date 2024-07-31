@@ -25,7 +25,7 @@ std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
     for (auto i = iter; i != end; ++i) {
         int number = std::stoi(i->str());
 
-        checkForNegative(number);
+        checkIfNegative(number);
         number = checkNumberLimit(number);
         // Add the number to the vector if it's not excluded
         if (number != 0) {

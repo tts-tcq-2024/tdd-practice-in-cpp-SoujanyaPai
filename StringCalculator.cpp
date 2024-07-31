@@ -38,21 +38,19 @@ int StringCalculator::parseAndSum(const std::vector<std::string>& tokens) {
         int number = std::stoi(token);
         if (number < 0) {
             negatives.push_back(number);
-        } else if (number <= 1000) {
-            sum += number;
         }
-    }
-
-    if (!negatives.empty()) {
-        std::ostringstream oss;
-        oss << "Negatives not allowed: ";
-        for (int neg : negatives) {
-            oss << neg << " ";
-        }
-        throw std::runtime_error(oss.str());
-    }
 
     return sum;
+}
+
+void StringCalculator::checkIfNegative(int number) {
+    if (number < 0) {
+        throw std::runtime_error("Negative numbers not allowed.");
+    }
+}
+
+int StringCalculator::checkIfGreaterthan1000(int number) {
+    return (number > 1000) ? 0 : number;
 }
 
 int StringCalculator::add(const std::string& numbers) {

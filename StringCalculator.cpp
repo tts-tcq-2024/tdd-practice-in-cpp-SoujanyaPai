@@ -15,11 +15,11 @@ int StringCalculator::checkNumberLimit(int number) {
     return (number > 1000) ? 0 : number;
 }
 
-std::vector<int> StringCalculator::extractNumbers(const std::string& numbers) {
+std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
     std::vector<int> numbers;
     
     std::regex pattern(R"(-?\d{1,4})");  // The -? allows for optional negative signs
-    std::sregex_iterator iter(numbers.begin(), numbers.end(), pattern);
+    std::sregex_iterator iter(input.begin(), input.end(), pattern);
     std::sregex_iterator end;
 
     for (auto i = iter; i != end; ++i) {

@@ -24,7 +24,9 @@ std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
     std::sregex_iterator end;
 
     for (auto i = checkPattern; i != end; ++i) {
-        int number = std::stringstream(input);
+        int number;
+        std::stringstream str(input);
+        str >> number;
 
         checkIfNegative(number);
         number = checkNumberLimit(number);

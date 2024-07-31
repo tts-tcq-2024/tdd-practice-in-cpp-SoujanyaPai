@@ -1,6 +1,7 @@
 #include "StringCalculator.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <vector>
 #include <regex>
@@ -23,7 +24,7 @@ std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
     std::sregex_iterator end;
 
     for (auto i = checkPattern; i != end; ++i) {
-        int number = std::stoi(i->str());
+        int number = std::stringstream(input);
 
         checkIfNegative(number);
         number = checkNumberLimit(number);

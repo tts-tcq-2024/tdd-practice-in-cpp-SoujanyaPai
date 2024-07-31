@@ -27,6 +27,7 @@ std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
 
         checkIfNegative(number);
         number = checkNumberLimit(number);
+        numbers.push_back(number);
     }
     return numbers;
 }
